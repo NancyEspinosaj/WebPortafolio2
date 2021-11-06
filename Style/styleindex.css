@@ -1,0 +1,321 @@
+@use postcss-preset-env {
+    stage: 0;
+}
+  
+:root {
+    --color-background: #000119;
+    --stroke-width: calc(1em / 16);
+    --font-size: 20vmin;
+    --font-weight: 700;
+    --letter-spacing: calc(1em / 15);
+    --color-one: #000366;
+    --color-two: #0F1033;
+    --color-three: #1F2166;
+    --color-four: #0006B3;
+}
+
+* {
+box-sizing: border-box;
+}
+
+body {
+background-color: var(--color-background);
+display: grid;
+font-family: Poppins, sans-serif;
+margin: 0;
+min-block-size: 100vh;
+place-items: center;
+padding: 5vmin;
+}
+
+h1 {
+background-clip: text;
+background-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
+color: var(--color-background);
+font-size: var(--font-size);
+font-weight: var(--font-weight);
+letter-spacing: var(--letter-spacing);
+padding: calc(--stroke-width / 2);
+-webkit-text-stroke-color: transparent;
+-webkit-text-stroke-width: var(--stroke-width);
+}
+
+.IndexTitle{
+height: 800px;
+margin-top: 100px;
+}
+
+
+  /* Menu*/
+
+.links {
+background-color: var(--color-two);
+background-image: linear-gradient(to bottom, #0003, transparent);
+border-bottom: 1px solid #0003;
+box-shadow: 0 0 32px #0003;
+font-size: 2em;
+font-weight: 300;
+}
+.links > a {
+	color: white;
+	padding: .75em;
+	text-align: center;
+	text-decoration: none;
+	transition: all .5s;
+}
+.links > a:hover {
+	background: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
+	color: white;
+}
+.links > .line {
+	background: #68a;
+	height: 1px;
+	pointer-events: none;
+}
+
+/* The Magic */
+#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+.links {
+	display: grid;
+	grid-template-columns: repeat(var(--items), 1fr);
+	position: relative;
+}
+.links > .line {
+	opacity: 0;
+	transition: all .5s;
+	position: absolute;
+	bottom: 0;
+	left: var(--left, calc(100% / var(--items) * (var(--index) - 1)));
+	width: var(--width, calc(100% / var(--items)));
+	--index: 0;
+}
+.links > a:hover ~ .line {
+	opacity: 1;
+}
+
+.links > a:nth-of-type(1):hover ~ .line { --index: 1; }
+.links > a:nth-of-type(2):hover ~ .line { --index: 2; }
+.links > a:nth-of-type(3):hover ~ .line { --index: 3; }
+.links > a:nth-of-type(4):hover ~ .line { --index: 4; }
+.links > a:nth-of-type(5):hover ~ .line { --index: 5; }
+.links > a:nth-of-type(6):hover ~ .line { --index: 6; }
+.links > a:nth-of-type(7):hover ~ .line { --index: 7; }
+.links > a:nth-of-type(8):hover ~ .line { --index: 8; }
+.links > a:nth-of-type(9):hover ~ .line { --index: 9; }
+.links > a:nth-of-type(10):hover ~ .line { --index: 10; }
+.links > a:last-of-type:hover ~ .line { --index: var(--items); }
+
+/*Section description*/
+
+.about-section{
+    background: url(../Images/Avatar2.png) no-repeat left;
+    *background-size: 55%;
+    background-color: black;
+    overflow: hidden;
+    padding: 100px 0;
+}
+
+.inner-container{
+    width: 55%;
+    float: right;
+    background-color: var(--color-one);
+    padding: 150px;
+}
+
+.inner-container h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.text{
+    font-size: 13px;
+    color: white;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+.skills{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 13px;
+    color: white;
+}
+
+@media screen and (max-width:1200px){
+    .inner-container{
+        padding: 80px;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .about-section{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .about-section{
+        padding: 0;
+    }
+    .inner-container{
+        padding: 60px;
+    }
+}
+
+/*Cards Section*/
+.sectionContainer{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.sectionContainer h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.container{
+    width: 1000px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .card{
+    position: relative;
+    cursor: pointer;
+    
+}
+
+.container .card .face{
+    width: 300px;
+    height: 200px;
+    transition: 0.5s;
+    border:white 1px solid;
+}
+
+.container .card .face.face1{
+    position: relative;
+    background: var(--color-two);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(100px);
+}
+
+.container .card:hover .face.face1{
+    background: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
+    transform: translateY(0);
+}
+
+.container .card .face.face1 .content{
+    
+    transition: 0.5s;
+}
+
+.container .card:hover .face.face1 .content{
+    opacity: 1;
+}
+
+.container .card .face.face1 .content img{
+    max-width: 100px;
+}
+
+.container .card .face.face1 .content h3{
+    margin: 10px 0 0;
+    padding: 0;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.container .card .face.face2{
+    position: relative;
+    background: var(--color-two);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    transform: translateY(-100px);
+}
+
+.container .card:hover .face.face2{
+    transform: translateY(0);
+}
+
+.container .card .face.face2 .content p{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.container .card .face.face2 .content a{
+    margin: 15px 0 0;
+    display:  inline-block;
+    text-decoration: none;
+    font-weight: 900;
+    color: white;
+    padding: 5px;
+    border: 1px solid #333;
+}
+
+.container .card .face.face2 .content a:hover{
+    background: #333;
+    color: #fff;
+}
+
+/*FOOTER*/
+.footer-basic {
+    width: 100%;
+    padding:40px 0;
+    background-color:var(--color-three);
+    color:white;
+  }
+
+
+.footer-basic .social {
+text-align:center;
+padding-bottom:25px;
+}
+
+.footer-basic img {
+font-size:24px;
+width:40px;
+height:40px;
+line-height:40px;
+display:inline-block;
+text-align:center;
+border-radius:50%;
+border:1px solid #ccc;
+margin:0 8px;
+color:inherit;
+opacity:0.75;
+}
+
+
+.footer-basic .social > a:hover {
+opacity:0.9;
+}
+
+.footer-basic .copyright {
+margin-top:15px;
+text-align:center;
+font-size:13px;
+color:#aaa;
+margin-bottom:0;
+}
